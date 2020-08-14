@@ -1,5 +1,10 @@
 pipeline {
     agent any
+    environment {
+        docker_image = 'tomcat-docotsubu'
+        docker_version = '0.1'
+        docker_run_name = 'unit-test-tomcat'
+      }
     stages {
         stage('delete_workspace') {
             steps {
@@ -28,8 +33,16 @@ pipeline {
         stage('docker build') {
             agent { label 'master'}
             steps {
-
-                sh 'docker build -t test-tomcat:0.1 .'
+                sh 'docker build -t ${docker_image}:${docker_version} .'
+            }
+        }
+        stage('tomcat run') {
+            agent { label 'master'}
+            steps {
+                sh '''
+                ./rmdocker.sh ${docker_run_name}
+                '''
+                sh 'docker run -d --name ${docker_run_name} -p 8080:8080 ${docker_image}:${docker_version}'              
             }
         }
     }
