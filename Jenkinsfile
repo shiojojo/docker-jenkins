@@ -40,7 +40,7 @@ pipeline {
             agent { label 'master'}
             steps {
                 sh '''
-                docker ps -a -q -f `docker ps -a -q -f name=${docker_run_name}` | echo "ignore failure"'
+                docker rm -f `docker ps -a -q -f name=${docker_run_name}` | echo "ignore failure"'
                 '''
                 sh 'docker run -d --name ${docker_run_name} -p 8080:8080 ${docker_image}:${docker_version}'              
             }
