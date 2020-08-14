@@ -1,7 +1,7 @@
 #!/bin/sh
 containerId=`docker ps -a -q -f name=$1`
 
-if [ -n ${containerId} ] ; then
+if [ ${#containerId} != 0 ] ; then
     docker rm -f ${containerId}
     echo "docker rm ${containerId}"
 else
