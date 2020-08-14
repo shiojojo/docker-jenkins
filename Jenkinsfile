@@ -41,7 +41,7 @@ pipeline {
             steps {
                 sh '''
                 docker_ps_result=`docker ps -a -q -f name=${docker_run_name}`
-                if [ -n $docker_ps_result ] ; then
+                if [ $docker_ps_result != '' ] ; then
                 docker rm -f $docker_ps_result
                 fi
                 '''
