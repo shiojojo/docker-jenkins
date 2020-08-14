@@ -40,7 +40,7 @@ pipeline {
         stage('tomcat run') {
             agent { label 'master'}
             steps {
-                sh 'docker_ps_result=`docker ps -a -f -q name=${docker_run_name}`'
+                sh 'docker_ps_result=`docker ps -a -q -f name=${docker_run_name}`'
                 sh 'docker rm -f ${docker_ps_result}'
                 sh 'docker run -d --name ${docker_run_name} -p 8080:8080 ${docker_image}:${docker_version}'              
             }
