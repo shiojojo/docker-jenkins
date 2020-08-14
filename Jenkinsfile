@@ -40,7 +40,7 @@ pipeline {
             agent { label 'master'}
             steps {
                 sh '''
-                ./rmdocker ${docker_run_name}
+                ./rmdocker.sh ${docker_run_name}
                 '''
                 sh 'docker run -d --name ${docker_run_name} -p 8080:8080 ${docker_image}:${docker_version}'              
             }
