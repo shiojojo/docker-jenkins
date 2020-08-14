@@ -4,7 +4,6 @@ pipeline {
         docker_image = 'tomcat-docotsubu'
         docker_version = '0.1'
         docker_run_name = 'unit-test-tomcat'
-        docker_ps_result = ''
       }
     stages {
         stage('delete_workspace') {
@@ -41,8 +40,7 @@ pipeline {
             agent { label 'master'}
             steps {
                 sh '''
-                docker_ps_result=`docker ps -a -q -f name=${docker_run_name}`
-                docker rm -f $docker_ps_result | echo "ignore failure"'
+                docker ps -a -q -f `docker ps -a -q -f name=${docker_run_name}` | echo "ignore failure"'
                 '''
                 sh 'docker run -d --name ${docker_run_name} -p 8080:8080 ${docker_image}:${docker_version}'              
             }
