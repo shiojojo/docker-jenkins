@@ -28,9 +28,13 @@ pipeline {
         stage('docker build') {
             agent { label 'master'}
             steps {
-
                 sh 'docker build -t test-tomcat:0.1 .'
             }
         }
+        stage('tomcat run')
+            agent { label 'master'}
+            steps {
+                sh 'docker build -t test-tomcat:0.1 .'              
+            }
     }
 }
