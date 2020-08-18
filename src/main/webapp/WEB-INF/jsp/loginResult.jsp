@@ -5,17 +5,13 @@ User loginUser = (User) session.getAttribute("loginUser");
 %>
 <html>
 <body>
-<% if(loginUser != null { %>
+<% if(loginUser != null) { %>
 <h2>ログイン成功</h2>
 <p><%= loginUser.getName() %></p>
-<form action="/docker-jenkins/Logout" method="get">
-<input type="submit" value="ログアウト">
+<a href="/docoTsubu/Main">投稿画面へ</a>
 <% } else { %>
 <h2>ログイン失敗</h2>
-<form action="/docker-jenkins/" method="get">
-<input type="submit" value="TOPへ">
+<a href="/docoTsubu/">TOPへ</a>
 <% } %>
-
-</form>
 </body>
 </html>
