@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ import com.sample.model.User; %>
+<%@ request.getAttribute("loginUser", loginUser); %>
 <html>
 <body>
-<h2>つぶやいてみよう</h2>
-<p>ログイン画面</p>
+<h2>ログイン成功</h2>
+<p><%= loginUser.getName() %></p>
 <form action="docker-jenkins/login" method="post"></form>
-ユーザー名：<input type="text" name="name"><br>
-パスワード：<input type="text" name="pass">
 <input type="submit" value="ログイン">
 </body>
 </html>
