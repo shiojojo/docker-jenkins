@@ -1,5 +1,6 @@
 package com.sample.servlet;
 
+import com.sample.model.LoginLogic;
 import com.sample.model.User;
 import org.jetbrains.annotations.NotNull;
 
@@ -23,9 +24,13 @@ public class Login extends HttpServlet {
 
             User user = new User(name, pass);
 
+            LoginLogic loginLogic = new LoginLogic();
+            boolean isLogin = loginLogic.execute(user);
 
-            HttpSession session = request.getSession();
-            session.setAttribute("loginUser", user);
+            if (isLogin){
+                HttpSession session = request.getSession();
+                session.setAttribute("loginUser", user);
+            }
 
 
 
