@@ -1,3 +1,5 @@
+package com.sample.servlet;
+
 import com.sample.model.User;
 import org.jetbrains.annotations.NotNull;
 
@@ -23,7 +25,7 @@ public class Logout extends HttpServlet {
 
 
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/index.jsp");
         dispatcher.forward(request, response);
     }
 }
