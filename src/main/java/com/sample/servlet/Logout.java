@@ -1,4 +1,5 @@
 import com.sample.model.User;
+import org.jetbrains.annotations.NotNull;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,9 +11,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/Logout")
-public class Login extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+public class Logout extends HttpServlet {
+    public static final long serialVersionUID = 1L;
+    protected void doGet(@NotNull HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
         HttpSession session = request.getSession();
