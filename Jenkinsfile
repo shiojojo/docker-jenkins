@@ -6,12 +6,12 @@ pipeline {
         docker_run_name = 'unit-test-tomcat'
       }
     stages {
-        stage('delete_workspace') {
-            agent { label 'master'}
-            steps {
-                 deleteDir()
-            }
-        }
+//         stage('delete_workspace') {
+//             agent { label 'master'}
+//             steps {
+//                  deleteDir()
+//             }
+//         }
         stage('build') {
             agent {
                 docker {
