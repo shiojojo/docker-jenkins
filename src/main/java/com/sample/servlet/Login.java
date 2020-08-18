@@ -20,11 +20,11 @@ public class Login extends HttpServlet {
             String name = request.getParameter("name");
             String pass = request.getParameter("pass");
 
-            User loginUser = (User) new User(name, pass);
+            User user = (User) new User(name, pass);
 
             HttpSession session = request.getSession();
 
-            session.setAttribute("loginUser", loginUser);
+            session.setAttribute("loginUser", user);
 
 
 
