@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%@ import com.sample.model.User; %>
-<%@ request.getAttribute("loginUser", loginUser); %>
+<%@ page import="com.sample.model.User" %>
+<%
+User loginUser = (User) session.getAttribute("loginUser");
+%>
 <html>
 <body>
 <h2>ログイン成功</h2>
