@@ -8,7 +8,8 @@ User loginUser = (User) session.getAttribute("loginUser");
 <% if(loginUser != null) { %>
 <h2>ログイン成功</h2>
 <p><%= loginUser.getName() %></p>
-<a href="/docker-jenkins/Main">投稿画面へ</a>
+<a href="/docker-jenkins/Main">投稿画面へ</a><br>
+<a href="/docker-jenkins/Logout">ログアウト</a>
 <% } else { %>
 <h2>ログイン失敗</h2>
 <a href="/docker-jenkins/">TOPへ</a>
