@@ -7,7 +7,7 @@ User loginUser = (User) session.getAttribute("loginUser");
 <body>
 <h2>ログイン成功</h2>
 <p><%= loginUser.getName() %></p>
-<form action="/docker-jenkins/logout" method="post">
+<form action="/docker-jenkins/Logout" method="post">
 <input type="submit" value="ログアウト">
 </form>
 </body>
