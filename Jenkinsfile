@@ -1,16 +1,17 @@
 pipeline {
-    agent any
+    agent none
     environment {
         docker_image = 'tomcat-docotsubu'
         docker_version = '0.1'
         docker_run_name = 'unit-test-tomcat'
       }
     stages {
-        stage('delete_workspace') {
-            steps {
-                 deleteDir()
-            }
-        }
+//         stage('delete_workspace') {
+//             agent { label 'master'}
+//             steps {
+//                  deleteDir()
+//             }
+//         }
         stage('build') {
             agent {
                 docker {
