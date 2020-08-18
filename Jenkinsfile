@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent none
     environment {
         docker_image = 'tomcat-docotsubu'
         docker_version = '0.1'
@@ -7,6 +7,7 @@ pipeline {
       }
     stages {
         stage('delete_workspace') {
+            agent { label 'master'}
             steps {
                  deleteDir()
             }
