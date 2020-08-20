@@ -14,11 +14,10 @@
 </form>
 <a href="/docker-jenkins/Logout">ログアウト</a>
 <% if ( errorMsg != null ) { %>
-    <% for(Mutter mutter : mutterList) { %>
-    <p><%= mutter.getName() %> : <%= mutter.getText() %></p>
-    <% } %>
-<% } else { %>
-<p><%= errorMsg.value() %></p>
-} %>
+<p><%= errorMsg %></p>
+<% } %>
+<% for(Mutter mutter : mutterList) { %>
+<p><%= mutter.getName() %> : <%= mutter.getText() %></p>
+<% } %>
 </body>
 </html>
