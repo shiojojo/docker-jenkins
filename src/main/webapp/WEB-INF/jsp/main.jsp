@@ -3,9 +3,6 @@
 <%
 User loginUser = (User) session.getAttribute("loginUser");
 %>
-<%
-List<Mutter> mutterList = (List<Mutter>) application.getAttribute("mutterList");
-%>
 <html>
 <body>
 <h2>投稿画面</h2>
