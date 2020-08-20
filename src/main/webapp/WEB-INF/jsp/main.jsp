@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page import="com.sample.model.User" %>
+<%@ page import="com.sample.model.Mutter" %>
 <%@ page import="java.util.List" %>
 <%
 User loginUser = (User) session.getAttribute("loginUser");
