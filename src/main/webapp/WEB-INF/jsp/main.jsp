@@ -2,16 +2,9 @@
 <%@ page import="com.sample.model.User" %>
 <%@ page import="com.sample.model.Mutter" %>
 <%@ page import="java.util.List" %>
-<%
-User loginUser = (User) session.getAttribute("loginUser");
-%>
-<%
-<%
-String errorMsg = (String) session.getAttribute("errorMsg");
-%>
-<%
-List<Mutter> mutterList = (List<Mutter>) application.getAttribute("mutterList");
-%>
+<% User loginUser = (User) session.getAttribute("loginUser"); %>
+<% String errorMsg = (String) session.getAttribute("errorMsg"); %>
+<% List<Mutter> mutterList = (List<Mutter>) application.getAttribute("mutterList"); %>
 <html>
 <body>
 <h2>投稿画面</h2>
