@@ -2,6 +2,7 @@ package com.sample.servlet;
 
 import com.sample.model.LoginLogic;
 import com.sample.model.Mutter;
+import com.sample.model.PostMutterLogic;
 import com.sample.model.User;
 import org.jetbrains.annotations.NotNull;
 
@@ -19,6 +20,31 @@ import java.util.List;
 @WebServlet("/Main")
 public class Main extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    protected void dot(@NotNull HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+//        リクエストパラメータの取得
+        request.setCharacterEncoding("UTF-8");
+        String text = request.getParameter("text");
+
+        HttpSession session = request.getSession();
+        User loginUser = (User) session.getAttribute("loginUser");
+
+        Mutter mutter = new Mutter(loginUser.getName(), text);
+
+
+        //      つぶやきリストをアプリケーションスコープから取得
+        ServletContext application = this.getServletContext();
+        List<Mutter> mutterList = (List<Mutter>)application.getAttribute("mutterList");
+
+        PostMutterLogic postMutterLogic = new PostMutterLogic();
+        postMutterLogic.execute(mutter,mutterList);
+
+        application.setAttribute("mutterList", mutterList);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main.jsp");
+        dispatcher.forward(request, response);
+    }
+
     protected void doGet(@NotNull HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 //        リクエストパラメータの取得
@@ -33,12 +59,7 @@ public class Main extends HttpServlet {
         ServletContext application = this.getServletContext();
         List<Mutter> mutterList = (List<Mutter>)application.getAttribute("mutterList");
 
-
-
         application.setAttribute("mutterList", mutterList);
-
-
-
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main.jsp");
         dispatcher.forward(request, response);

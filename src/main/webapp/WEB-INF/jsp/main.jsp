@@ -11,6 +11,9 @@ List<Mutter> mutterList = (List<Mutter>) application.getAttribute("mutterList");
 <html>
 <body>
 <h2>投稿画面</h2>
-
+<form action="/docker-jenkins/Main" method="post">
+つぶやき：<input type="text" name="text"><br>
+<input type="submit" value="投稿">
+</form>
 </body>
 </html>
