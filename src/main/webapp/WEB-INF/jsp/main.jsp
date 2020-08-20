@@ -2,12 +2,9 @@
 <%@ page import="com.sample.model.User" %>
 <%@ page import="com.sample.model.Mutter" %>
 <%@ page import="java.util.List" %>
-<%
-User loginUser = (User) session.getAttribute("loginUser");
-%>
-<%
-List<Mutter> mutterList = (List<Mutter>) application.getAttribute("mutterList");
-%>
+<% User loginUser = (User) session.getAttribute("loginUser"); %>
+<% String errorMsg = (String) request.getAttribute("errorMsg"); %>
+<% List<Mutter> mutterList = (List<Mutter>) application.getAttribute("mutterList"); %>
 <html>
 <body>
 <h2>投稿画面</h2>
@@ -16,6 +13,9 @@ List<Mutter> mutterList = (List<Mutter>) application.getAttribute("mutterList");
 <input type="submit" value="投稿">
 </form>
 <a href="/docker-jenkins/Logout">ログアウト</a>
+<% if ( errorMsg != null ) { %>
+<p><%= errorMsg %></p>
+<% } %>
 <% for(Mutter mutter : mutterList) { %>
 <p><%= mutter.getName() %> : <%= mutter.getText() %></p>
 <% } %>

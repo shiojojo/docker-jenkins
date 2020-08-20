@@ -35,9 +35,13 @@ public class Main extends HttpServlet {
         HttpSession session = request.getSession();
         User loginUser = (User) session.getAttribute("loginUser");
 
-        Mutter mutter = new Mutter(loginUser.getName(), text);
-        PostMutterLogic postMutterLogic = new PostMutterLogic();
-        postMutterLogic.execute(mutter,mutterList);
+        if (text != null && text.length() != 0) {
+            Mutter mutter = new Mutter(loginUser.getName(), text);
+            PostMutterLogic postMutterLogic = new PostMutterLogic();
+            postMutterLogic.execute(mutter, mutterList);
+        } else {
+            request.setAttribute("errorMsg", "つぶやきが入力されていません。");
+        }
 
         application.setAttribute("mutterList", mutterList);
 
@@ -53,13 +57,20 @@ public class Main extends HttpServlet {
         HttpSession session = request.getSession();
         User loginUser = (User) session.getAttribute("loginUser");
 
+
 //        つぶやきリスト新規作成
         if (mutterList == null) {
             mutterList = new ArrayList<>();
             application.setAttribute("mutterList", mutterList);
         }
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main.jsp");
-        dispatcher.forward(request, response);
+        if(loginUser != null) {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main.jsp");
+            dispatcher.forward(request, response);
+        } else {
+//            RequestDispatcher dispatcher = request.getRequestDispatcher("/");
+//            dispatcher.forward(request, response);
+            response.sendRedirect("/docker-jenkins/");
+        }
     }
 }
