@@ -35,7 +35,7 @@ public class Main extends HttpServlet {
         HttpSession session = request.getSession();
         User loginUser = (User) session.getAttribute("loginUser");
 
-        if (text != null || text.length() != 0) {
+        if (text != null && text.length() != 0) {
             Mutter mutter = new Mutter(loginUser.getName(), text);
             PostMutterLogic postMutterLogic = new PostMutterLogic();
             postMutterLogic.execute(mutter, mutterList);
