@@ -3,9 +3,6 @@
 <%
 User loginUser = (User) session.getAttribute("loginUser");
 %>
-<%
-User loginUser = (User) session.getAttribute("loginUser");
-%>
 <html>
 <body>
 <% if(loginUser != null) { %>
