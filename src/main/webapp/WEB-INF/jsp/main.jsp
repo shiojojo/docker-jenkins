@@ -6,6 +6,10 @@
 User loginUser = (User) session.getAttribute("loginUser");
 %>
 <%
+<%
+String errorMsg = (String) session.getAttribute("errorMsg");
+%>
+<%
 List<Mutter> mutterList = (List<Mutter>) application.getAttribute("mutterList");
 %>
 <html>
@@ -16,8 +20,12 @@ List<Mutter> mutterList = (List<Mutter>) application.getAttribute("mutterList");
 <input type="submit" value="投稿">
 </form>
 <a href="/docker-jenkins/Logout">ログアウト</a>
-<% for(Mutter mutter : mutterList) { %>
-<p><%= mutter.getName() %> : <%= mutter.getText() %></p>
-<% } %>
+<% if ( errorMsg != null ) { %>
+    <% for(Mutter mutter : mutterList) { %>
+    <p><%= mutter.getName() %> : <%= mutter.getText() %></p>
+    <% } %>
+<% } else { %>
+<p><%= errorMsg.value() %></p>
+} %>
 </body>
 </html>

@@ -39,6 +39,8 @@ public class Main extends HttpServlet {
             Mutter mutter = new Mutter(loginUser.getName(), text);
             PostMutterLogic postMutterLogic = new PostMutterLogic();
             postMutterLogic.execute(mutter, mutterList);
+        } else {
+            request.setAttribute("errorMsg", "つぶやきが入力されていません。");
         }
 
         application.setAttribute("mutterList", mutterList);
