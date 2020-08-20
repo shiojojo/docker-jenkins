@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/Main")
@@ -26,16 +27,15 @@ public class Main extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String text = request.getParameter("text");
 
-        HttpSession session = request.getSession();
-        User loginUser = (User) session.getAttribute("loginUser");
-
-        Mutter mutter = new Mutter(loginUser.getName(), text);
-
-
         //      つぶやきリストをアプリケーションスコープから取得
         ServletContext application = this.getServletContext();
         List<Mutter> mutterList = (List<Mutter>)application.getAttribute("mutterList");
 
+//        セッションを取得
+        HttpSession session = request.getSession();
+        User loginUser = (User) session.getAttribute("loginUser");
+
+        Mutter mutter = new Mutter(loginUser.getName(), text);
         PostMutterLogic postMutterLogic = new PostMutterLogic();
         postMutterLogic.execute(mutter,mutterList);
 
@@ -46,19 +46,15 @@ public class Main extends HttpServlet {
     }
 
     protected void doGet(@NotNull HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-//        リクエストパラメータの取得
-        request.setCharacterEncoding("UTF-8");
-        String text = request.getParameter("text");
-
-        HttpSession session = request.getSession();
-        User loginUser = (User) session.getAttribute("loginUser");
-
-
         //      つぶやきリストをアプリケーションスコープから取得
         ServletContext application = this.getServletContext();
         List<Mutter> mutterList = (List<Mutter>)application.getAttribute("mutterList");
 
+        HttpSession session = request.getSession();
+        User loginUser = (User) session.getAttribute("loginUser");
+
+//        つぶやきリスト新規作成
+        mutterList = new ArrayList<>();
         application.setAttribute("mutterList", mutterList);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main.jsp");
