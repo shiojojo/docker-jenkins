@@ -68,7 +68,7 @@ public class Main extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main.jsp");
             dispatcher.forward(request, response);
         } else {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/index.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/");
             dispatcher.forward(request, response);
         }
     }
