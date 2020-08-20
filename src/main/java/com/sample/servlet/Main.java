@@ -26,7 +26,7 @@ public class Main extends HttpServlet {
         String text = request.getParameter("text");
 
         HttpSession session = request.getSession();
-        session.getAttribute(loginUser);
+        User loginUser = (User) session.getAttribute("loginUser");
 
 
         //      つぶやきリストをアプリケーションスコープから取得
