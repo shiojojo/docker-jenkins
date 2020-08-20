@@ -54,8 +54,10 @@ public class Main extends HttpServlet {
         User loginUser = (User) session.getAttribute("loginUser");
 
 //        つぶやきリスト新規作成
-        mutterList = new ArrayList<>();
-        application.setAttribute("mutterList", mutterList);
+        if (mutterList == null) {
+            mutterList = new ArrayList<>();
+            application.setAttribute("mutterList", mutterList);
+        }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main.jsp");
         dispatcher.forward(request, response);
