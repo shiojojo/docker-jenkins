@@ -16,7 +16,7 @@ List<Mutter> mutterList = (List<Mutter>) application.getAttribute("mutterList");
 <input type="submit" value="投稿">
 </form>
 <% for(Mutter mutter : mutterList) { %>
-<p><%= mutter.getName() %> : <%= mutter.getText %>
+<p><%= mutter.getName() %> : <%= mutter.getText %></p>
 <% } %>
 </body>
 </html>
