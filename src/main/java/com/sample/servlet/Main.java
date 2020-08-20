@@ -70,7 +70,7 @@ public class Main extends HttpServlet {
         } else {
 //            RequestDispatcher dispatcher = request.getRequestDispatcher("/");
 //            dispatcher.forward(request, response);
-            response.sendRedirect("/");
+            response.sendRedirect("/docker-jenkins/");
         }
     }
 }
