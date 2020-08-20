@@ -19,7 +19,7 @@ import java.util.List;
 @WebServlet("/Main")
 public class Main extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    protected void doPost(@NotNull HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(@NotNull HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 //        リクエストパラメータの取得
         request.setCharacterEncoding("UTF-8");
